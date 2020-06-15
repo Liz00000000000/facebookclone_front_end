@@ -18,6 +18,11 @@ time, mark, audio, video {
 	font: inherit;
 	vertical-align: baseline;
 }
+
+* {
+  box-sizing: border-box;
+}
+
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
@@ -43,6 +48,13 @@ table {
 }
 
 /* CSS Reset above */
+
+/* Font Import */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+* {
+  font-family: 'Roboto', sans-serif;
+}
 
 /* Nav */
 nav {
@@ -294,3 +306,88 @@ nav {
   color: #3b3b3b;
 }
 
+/******** Landing Page ********/
+
+.landing-page * {
+  text-align: left;
+}
+
+.landing-page .landing-hero {
+  height: 90vh;
+  max-height: 300px;
+  background: linear-gradient(to bottom, #8878FF, #9183FF);
+  padding-top: 3rem;
+}
+
+.landing-hero .inner-container {
+  width: 95%;
+  max-width: 968px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.landing-hero h1 {
+  font-size: 3rem;
+  line-height: 1.5;
+  text-align: center;
+  max-width: 650px;
+  font-family: 'Roboto', sans-serif;
+  margin-left: auto;
+  margin-right: auto;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #f7f7f7;
+  text-shadow: 0 0 5px rgba(0,0,0,.5);
+}
+
+.landing-hero p {
+  margin-top: 2rem;
+  color: rgba(255, 255,255,.85);
+  text-align: center;
+  font-size: 1.25rem;
+  text-align: center;
+  max-width: 600px;
+  font-family: 'Roboto', sans-serif;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.5;
+}
+
+.landing-page svg {
+  z-index: 10;
+  transform: rotateX(180deg);
+}
+
+.intro-section {
+  position: relative;
+  background: #fff;
+}
+
+.feature-container {
+  width: 90%;
+  max-width: 600px;
+  background:#fff;
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 1rem;
+  border-radius: 5px;
+  box-shadow: 2px 6px 8px rgba(0,0,0,.15);
+}
+
+.feature-container .individual-feature {
+  display: flex;
+}
+
+.individual-feature .photo-container {
+  flex-basis: 40%;
+}
+
+.individual-feature .photo-container img {
+  width: 200px;
+}
+
+.individual-feature .content-container {
+  flex-basis: 60%;
+}
