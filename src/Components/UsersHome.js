@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import User from './User'
 import Post from './Post'
+import UserIndex from './UserIndex'
 
 export class UsersHome extends Component {
     state ={
@@ -36,12 +37,14 @@ export class UsersHome extends Component {
         let posts = this.state.posts.filter(posts => posts.caption.toLowerCase().includes(this.state.search.toLowerCase()))
         return (
             <div>
-            <input onChange={this.handleOnSearch} value={this.state.search} placeholder='Searching...'></input>
+            {/* <input onChange={this.handleOnSearch} value={this.state.search} placeholder='Searching...'></input>
             <select onChange={this.handleOnchange}>
                 <option name='seePostsOnly'>See All Posts</option>
                 <option name='seePostsOnly'>See All Users</option>
-            </select>
-                {this.state.seePostsOnly ? posts.map(post => <Post inputField={this.state.inputField}  commentAdd={this.commentAdd} users={this.state.users} comments={this.state.comments} replies={this.state.replies} key={post.id} {...post} likes={this.state.likes} />) : users.map(user => <User key={user.id} {...user} likes={this.state.likes} friends={this.state.friends} />) }
+            </select> */}
+                {/* {this.state.seePostsOnly ? posts.map(post => <Post inputField={this.state.inputField}  commentAdd={this.commentAdd} users={this.state.users} comments={this.state.comments} replies={this.state.replies} key={post.id} {...post} likes={this.state.likes} />) : users.map(user => <User key={user.id} {...user} likes={this.state.likes} friends={this.state.friends} />) }
+                {users.map(user => <UserIndex key={user.id} {...user} />)} */}
+                {users.map(user => <UserIndex key={user.id} {...user} />)}
             </div>
         )
     }
