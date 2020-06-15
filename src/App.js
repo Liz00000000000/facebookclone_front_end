@@ -7,6 +7,7 @@ import UserIndex from './Components/UserIndex';
 import { Route, Switch } from 'react-router-dom';
 import Landing from './Components/Landing';
 import User from './Components/User';
+import Post from './Components/Post'
 
 
 class App extends Component {
@@ -48,6 +49,7 @@ currentUser = (id) => {
         {/* <UsersHome/> */}
         <Switch>
           {/* <Route path="/users/:id" component={User} /> */}
+          <Route path='/posts' render={() => this.state.posts.map(post => <Post key={post.id} commentsFromState={this.state.comments} {...post} users={this.state.users} />) } />
           <Route path="/users/:id" render={() => <User user={this.state.indivUser} />} />
           <Route path="/users" render={() => <UserIndex currentUserFunc={this.currentUser} users={this.state.users} />} />
           <Route path="/" component={Landing} />
