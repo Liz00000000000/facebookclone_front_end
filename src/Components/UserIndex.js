@@ -4,10 +4,10 @@ import UserCard from './UserCard'
 export default class UserIndex extends Component {
 
     render() {
-        // console.log(this.props)
+
         return (
             <div className="userContainer">
-              {this.props.users.map(user => <UserCard key={user.id} {...user}/>)}
+              {this.props.users.map(user => <UserCard currentUserFunc={this.props.currentUserFunc} key={user.id} {...user}/>)}
             </div>
         )
     }

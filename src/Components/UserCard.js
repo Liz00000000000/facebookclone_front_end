@@ -7,15 +7,15 @@ export default class extends Component {
         return `${this.props.first_name} ${this.props.last_name}`
     }
 
-    // handleClick = () => {
-    //     console.log(this.props.id)
-    // }
+    handleClick = () => {
+        this.props.currentUserFunc(this.props.id)
+    }
 
     render() {
         const {id, first_name, last_name, picture} = this.props
-
+        
         return (
-            <Link to={`/users/${id}`} className="userCard">
+            <Link onClick={this.handleClick} to={`/users/${id}`} className="userCard">
             <h2>{first_name} {last_name}</h2>
             <img src={picture} alt={`${this.fullName()} profile picture`}/>
             </Link>

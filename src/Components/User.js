@@ -3,11 +3,40 @@ import Post from './Post'
 
 const User = (props) => {
 
-    return(
-        <h1>This is an individual user page</h1>
-    )
+    const posts = props.user.posts
+    // console.log(posts.length)
 
-    // let friendsArray = props.friends.filter(friend => friend.user_id_1 === props.id || friend.user_id_2 === props.id)
+    return(
+        <div>
+            <div className="hero"></div>
+            <div className="user-info">
+                <div className="left-container">
+                    <div><span>50</span> friends</div>
+                    <div><span>1</span> posts</div>
+                    {/* <div><span>{posts.length}</span> posts</div> */}
+    <div>Age: <span>{props.user.age}</span></div>
+                    <div>Job: <span>{props.user.occupation}</span></div>
+                    <div>City: <span>{props.user.location}</span></div>
+                    <div>School: <span>{props.user.college}</span></div>
+                </div>
+                <div className="person-container">
+    <span className="name">{props.user.first_name} {props.user.last_name}</span>
+                    <img src={props.user.picture} alt=""/>
+                    <span className="bio">{props.user.bio}</span>
+                </div>
+            </div>
+            <div className="post-container">
+                <div className="inner-container">
+                    {posts.map(post => <Post user={props.user} key={post.id} {...post} />)}
+                </div>
+            </div>
+        </div>
+    )
+}
+
+export default User
+
+// let friendsArray = props.friends.filter(friend => friend.user_id_1 === props.id || friend.user_id_2 === props.id)
     // let friends = friendsArray.length
     // let posts = props.posts.length
 
@@ -43,6 +72,3 @@ const User = (props) => {
     //             {/* {props.posts.map(post => <Post key={post.id} {...post} likes={props.likes} comments={props.comments} />)} */}
     //         </div>
     //     )
-}
-
-export default User

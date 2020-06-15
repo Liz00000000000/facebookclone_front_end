@@ -70,13 +70,22 @@ nav {
   -webkit-box-align: center;
           align-items: center;
 }
+
+.user-info * {
+  text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5));
+}
 .user-info .inner-container {
   width: 100%;
   max-width: 1100px;
   margin: auto;
 }
+
+.user-info .left-container * {
+  color: #f7f7f7;
+}
+
 .user-info .inner-container * {
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+  text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5));
 }
 .user-info .person-container {
   position: absolute;

@@ -18,7 +18,8 @@ class App extends Component {
     comments: [],
     friends: [],
     replies: [],
-    search: ''
+    search: '',
+    indivUser: {}
     // seePostsOnly: true
   }
 
@@ -31,15 +32,24 @@ class App extends Component {
     fetch('http://localhost:3000/replies').then(res => res.json()).then(replies => this.setState({ replies }))
 }
 
-  render() {
+currentUser = (id) => {
+  console.log(id)
+  const indivUserObj = this.state.users.find(user => user.id === id)
+  this.setState({
+    indivUser: indivUserObj
+  })
+}
 
+  render() {
+    
     return (
       <div className="App">
         <Nav />
         {/* <UsersHome/> */}
         <Switch>
-          <Route path="/users/:id" component={User} />
-          <Route path="/users" render={() => <UserIndex users={this.state.users} />} />
+          {/* <Route path="/users/:id" component={User} /> */}
+          <Route path="/users/:id" render={() => <User user={this.state.indivUser} />} />
+          <Route path="/users" render={() => <UserIndex currentUserFunc={this.currentUser} users={this.state.users} />} />
           <Route path="/" component={Landing} />
         </Switch>
       </div>
