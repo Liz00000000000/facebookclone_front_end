@@ -24,7 +24,7 @@ class App extends Component {
     search: '',
     indivUser: {},
     newPost: '',
-    loggedIn: false,
+    loggedIn: true,
     currentUserId: ''
     // seePostsOnly: true
   }
