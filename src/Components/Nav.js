@@ -7,18 +7,32 @@ class Nav extends Component {
     //     return `${this.props.first_name} ${this.props.last_name}` 
     // }
 
-    render() {
+    loggedOutNav = () => {
+        return <div className="page-nav-container logged-out">
+        <NavLink to="/login">Sign In</NavLink>
+        <NavLink to="/signup">Sign Up</NavLink>
+    </div>
+    }
 
+    loggedInNav = () => {
+        return <div className="page-nav-container logged-in">
+            <NavLink to="#">Profile</NavLink>    
+            <NavLink to="/posts">Posts</NavLink>
+            <NavLink to="/users">Users</NavLink>
+            <NavLink to="/">Log Out</NavLink>
+        </div>
+    }
+
+    render() {
+        // console.log(this.props.loggedIn)
         return (
             <nav>
                 <div className="inner-nav">
                     <div className="logo">
                         <NavLink to="/">So Not Facebook</NavLink>
                     </div>
-                    <div className="page-nav-container">
-                        <NavLink to="/login">Sign In</NavLink>
-                        <NavLink to="/signup">Sign Up</NavLink>
-                    </div>
+                    {/* {this.loggedInNav()} */}
+                    { this.props.loggedIn ? this.loggedInNav() : this.loggedOutNav()}
                 </div>
             </nav>
         )

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Comment from './Comment'
+// import Comment from './Comment'
 
 const url = 'http://localhost:3000/comments'
 
@@ -72,7 +72,7 @@ export class Post extends Component {
         const postWritter = this.props.users.find(user => user.id === userid)
         const postLikes = this.props.likes.filter(like => like.post_id === this.props.id)
         let numOfLikes = postLikes.length
-        let commentsForThisPage = this.props.commentsFromState.filter(comment => comment.post_id == this.props.id)
+        // let commentsForThisPage = this.props.commentsFromState.filter(comment => comment.post_id == this.props.id)
 
         return (
             <div className="posts-inner-container">

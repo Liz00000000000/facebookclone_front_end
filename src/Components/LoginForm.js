@@ -15,11 +15,11 @@ class LoginForm extends Component {
 
     handleSubmit = e => {
         e.preventDefault()
-        
+        console.log(this.state)
     }
 
     render() {
-        console.log(this.state.email, this.state.password)
+        
         return (
             <div className='con-inner-container'>
                 <form onSubmit={this.handleSubmit} >

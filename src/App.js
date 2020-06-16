@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 import UsersHome from './Components/UsersHome'
 import Nav from './Components/Nav'
@@ -23,7 +23,9 @@ class App extends Component {
     replies: [],
     search: '',
     indivUser: {},
-    newPost: ''
+    newPost: '',
+    loggedIn: false,
+    currentUserId: ''
     // seePostsOnly: true
   }
 
@@ -62,7 +64,7 @@ handleLike = (postID) => {
 
 deletePost = (id) => {
   const postID = id
-  this.setState({ posts: this.state.posts.filter(post => post.id != postID) })
+  this.setState({ posts: this.state.posts.filter(post => post.id !== postID) })
   fetch('http://localhost:3000/posts/' + id, {
    method: 'DELETE', 
    headers: {
@@ -93,11 +95,11 @@ handleOnchange = (event) => {
 }
 
   render() {
-    console.log(this.state)
+
     
     return (
       <div className="App">
-        <Nav />
+        <Nav loggedIn={this.state.loggedIn} />
         {/* <UsersHome/> */}
         <Switch>
           {/* <Route path="/users/:id" component={User} /> */}
