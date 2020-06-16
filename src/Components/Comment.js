@@ -3,17 +3,17 @@ import Reply from './Reply'
 
 
 class Comment extends Component {
-    // state = {
-    //     inputVisible: false,
-    //     newReplyInput: ''
-    // }
+    state = {
+        inputVisible: false,
+        newReplyInput: ''
+    }
 
-    // handleOnChange = event => this.setState({ [event.target.name]: event.target.value })
+    handleOnChange = event => this.setState({ [event.target.name]: event.target.value })
 
-    // handleClick = () => this.setState({ inputVisible: !this.state.inputVisible })
+    handleClick = () => this.setState({ inputVisible: !this.state.inputVisible })
 
 
-    // theseReplies = this.props.replies.filter(reply => reply.comment_id === this.props.id)
+    theseReplies = this.props.replies.filter(reply => reply.comment_id === this.props.id)
 
     render() {
         let commentWriter = this.props.users.find(user => user.id === this.props.user_id )
@@ -25,8 +25,8 @@ class Comment extends Component {
                   {commentWriter.first_name} {commentWriter.last_name}
                 </span>
                 <p>{this.props.content}</p>
-                {/* <button className='add-reply' onClick={this.handleClick}>{this.state.inputVisible ? 'Submit Reply' : 'Add Reply'}</button> */}
-                {/* {this.state.inputVisible ? <input onChange={this.handleOnChange} name='newReplyInput' placeholder='Comment...' value={this.state.newCommentInput}></input> : null } */}
+                <button className='add-reply' onClick={this.handleClick}>{this.state.inputVisible ? 'Submit Reply' : 'Add Reply'}</button> 
+                {this.state.inputVisible ? <input onChange={this.handleOnChange} name='newReplyInput' placeholder='Comment...' value={this.state.newCommentInput}></input> : null }
                {/* {this.theseReplies.map(rep => <Reply users={this.props.users} key={rep.id} {...rep} /> )} */}
             </div>
         )
