@@ -27,7 +27,7 @@ const User = (props) => {
             </div>
             <div className="post-container">
                 <div className="inner-container">
-                    {posts.map(post => <PostOnProfilePage user={props.user} key={post.id} {...post} />)}
+                    {posts.map(post => <PostOnProfilePage deletePost={props.deletePost} user={props.user} key={post.id} {...post} />)}
                 </div>
             </div>
         </div>

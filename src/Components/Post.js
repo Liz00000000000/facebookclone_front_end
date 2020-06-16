@@ -63,9 +63,14 @@ export class Post extends Component {
     //    }
     //  }
 
+
+    
+
     render () {
         const userid = this.props.user_id
         const postWritter = this.props.users.find(user => user.id === userid)
+        const postLikes = this.props.likes.filter(like => like.post_id === this.props.id)
+        let numOfLikes = postLikes.length
         let commentsForThisPage = this.props.commentsFromState.filter(comment => comment.post_id == this.props.id)
 
         return (
@@ -76,9 +81,10 @@ export class Post extends Component {
                     <span className='post-date'> {this.props.date}</span>
                 </div>
                 <p>{this.props.caption}</p>
+                <p>{numOfLikes} Likes</p>
                 <div className='post-interaction-container'>
                     <div className='btns-container'> 
-                    <button className='add-like'> <i className='fad fa-heart'/>Like</button>
+                    <button className='add-like' onClick={() => this.props.handleLike(this.props.id)}> <i className='fad fa-heart'/>Like</button>
                  <button className='add-comment' onClick={this.handleClick} > {this.state.inputVisible ? 'Submit Comment' : 'Add Comment'}</button>
                     </div>
                     {commentsForThisPage.map(comment => <Comment users={this.props.users} key={comment.id} {...comment} />) }

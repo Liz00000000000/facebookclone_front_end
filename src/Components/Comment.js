@@ -35,8 +35,8 @@ class Comment extends Component {
                 </span>
                 <p>{this.props.content}</p>
                 <button onClick={this.handleDelete}>Delete Comment</button>
-                <button className='add-reply' onClick={this.handleClick}>{this.state.inputVisible ? 'Submit Reply' : 'Add Reply'}</button> 
-                {this.state.inputVisible ? <input onChange={this.handleOnChange} name='newReplyInput' placeholder='Comment...' value={this.state.newCommentInput}></input> : null }
+                {/* <button className='add-reply' onClick={this.handleClick}>{this.state.inputVisible ? 'Submit Reply' : 'Add Reply'}</button> 
+                {this.state.inputVisible ? <input onChange={this.handleOnChange} name='newReplyInput' placeholder='Comment...' value={this.state.newCommentInput}></input> : null } */}
                {/* {this.props.replies.map(rep => <Reply users={this.props.users} key={rep.id} {...rep} /> )} */}
             </div>
         )

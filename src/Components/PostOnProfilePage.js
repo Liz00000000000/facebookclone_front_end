@@ -17,10 +17,15 @@ export class Post extends Component {
 
     handleClick = () => this.setState({ inputVisible: !this.state.inputVisible })
 
+
+    removePost = (event) => {
+        this.props.deletePost(this.props.id)
+        event.target.parentNode.parentNode.parentNode.remove()
+    }
+
     
     render () {
    
-           console.log(this.props)
         return (
             <div className='post'>
                 <div className='user-container'>
@@ -32,6 +37,7 @@ export class Post extends Component {
                 <div className='post-interaction-container'>
                     <div className='btns-container'> 
                     <button className='add-like'> <i className='fad fa-heart'/>Like</button>
+                   <button onClick={this.removePost}>Delete Post</button>
                  <button className='add-comment' onClick={this.handleClick} > {this.state.inputVisible ? 'Submit Comment' : 'Add Comment'}</button>
                     </div>
                     {/* {commentsArray.map(comment => <Comment users={this.props.users} key={comment.id} {...comment} />) } */}
