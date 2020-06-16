@@ -11,7 +11,7 @@ export class Post extends Component {
         // commentsArary = this.props.commentsFromState.filter(comment => comment.post_id == this.props.id
 
            this.state = {
-                inputVisible: false,
+                inputVisible: true,
                 newCommentInput: '',
                 com: null 
             } 
@@ -64,7 +64,7 @@ export class Post extends Component {
     //  }
 
 
-    
+
 
     render () {
         const userid = this.props.user_id

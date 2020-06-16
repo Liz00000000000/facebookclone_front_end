@@ -45,10 +45,10 @@ export class Post extends Component {
                         <span className='like-count'>{this.likesArray ? this.likes : null }</span>
                     </div> */}
                 </div>
-                {/* <div className='comment-container'>
+                <div className='comment-container'>
                 {this.state.inputVisible ? <input onChange={this.handleOnChange} name='newCommentInput' placeholder='Comment...' value={this.state.newCommentInput}></input> : null }
                 {this.props.comments ? this.props.comments.map(comment =>  <Comment users={this.props.users} replies={this.props.replies} key={comment.id} {...comment} /> ) : null }
-                </div> */}
+                </div>
             </div>
         )
        }

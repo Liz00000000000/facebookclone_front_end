@@ -22,7 +22,8 @@ class App extends Component {
     friends: [],
     replies: [],
     search: '',
-    indivUser: {}
+    indivUser: {},
+    newPost: ''
     // seePostsOnly: true
   }
 
@@ -71,7 +72,28 @@ deletePost = (id) => {
  })
 }
 
+
+handleSubmitNewPost = (id) => {
+  const content = this.state.newPost
+  console.log(content)
+  fetch('http://localhost:3000/posts', {
+    method: 'POST', 
+    headers: {
+      "content-type": 'application/json',
+      accept: 'application/json'
+    },
+    body: JSON.stringify({ user_id: id, caption: content })
+  }).then(res => res.json()).then(comment => this.setState({ comments: [...this.state.comments, comment] }))
+}
+
+
+
+handleOnchange = (event) => {
+  this.setState({ [event.target.name]: event.target.value })
+}
+
   render() {
+    console.log(this.state)
     
     return (
       <div className="App">
@@ -80,7 +102,7 @@ deletePost = (id) => {
         <Switch>
           {/* <Route path="/users/:id" component={User} /> */}
           <Route path='/posts' render={() => this.state.posts.map(post => <Post likes={this.state.likes} handleLike={this.handleLike} handleNewComment={this.handleNewComment} key={post.id} commentsFromState={this.state.comments} {...post} users={this.state.users} />) } />
-          <Route path="/users/:id" render={() => <User deletePost={this.deletePost} user={this.state.indivUser} />} />
+          <Route path="/users/:id" render={() => <User handleOnchange={this.handleOnchange} handleSubmitNewPost={this.handleSubmitNewPost} newPost={this.state.newPost} deletePost={this.deletePost} user={this.state.indivUser} />} />
           <Route path="/users" render={() => <UserIndex currentUserFunc={this.currentUser} users={this.state.users} />} />
           <Route path="/login" component={LoginForm} />
           <Route path="/signup" component={SignupForm} />
