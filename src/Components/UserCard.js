@@ -13,11 +13,11 @@ export default class extends Component {
 
     render() {
         const {id, first_name, last_name, picture} = this.props
-        
+
         return (
             <Link onClick={this.handleClick} to={`/users/${id}`} className="userCard">
             <h2>{first_name} {last_name}</h2>
-            <img src={picture} alt={`${this.fullName()} profile picture`}/>
+            <img src={picture} alt={`${this.fullName()}`}/>
             </Link>
         )
     }

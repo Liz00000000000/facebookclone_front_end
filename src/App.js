@@ -21,7 +21,11 @@ class App extends Component {
     replies: [],
     search: '',
     indivUser: {},
-    newPost: ''
+    newPost: '',
+    loggedIn: false,
+    email: '',
+    password: '',
+    userLoggedIn: {}
     // seePostsOnly: true
   }
 
@@ -89,18 +93,27 @@ handleOnchange = (event) => {
   this.setState({ [event.target.name]: event.target.value })
 }
 
+handleLogIn = (e) => {
+  e.preventDefault()
+  const email = this.state.email 
+  const user = this.state.users.find(user => user.email === email)
+  if (user.password === this.state.password){
+    this.setState({ loggedIn: true, currentUser: user, email: '', password: '' })
+  }
+}
+
   render() {
-    
+    console.log(this.state.loggedIn)
     return (
       <div className="App">
-        <Nav />
+        <Nav loggedIn={this.state.loggedIn} />
         {/* <UsersHome/> */}
         <Switch>
           {/* <Route path="/users/:id" component={User} /> */}
-          <Route path='/posts' render={() => this.state.posts.map(post => <Post likes={this.state.likes} handleLike={this.handleLike} handleNewComment={this.handleNewComment} key={post.id} commentsFromState={this.state.comments} {...post} users={this.state.users} />) } />
-          <Route path="/users/:id" render={() => <User likes={this.state.likes} posts={this.state.posts} handleOnchange={this.handleOnchange} handleSubmitNewPost={this.handleSubmitNewPost} newPost={this.state.newPost} deletePost={this.deletePost} user={this.state.indivUser} />} />
+          <Route path='/posts' render={() => this.state.posts.map(post => <Post currentUser={this.state.currentUser} likes={this.state.likes} handleLike={this.handleLike} handleNewComment={this.handleNewComment} key={post.id} commentsFromState={this.state.comments} {...post} users={this.state.users} />) } />
+          <Route path="/users/:id" render={() => <User currentUser={this.state.currentUser} likes={this.state.likes} posts={this.state.posts} handleOnchange={this.handleOnchange} handleSubmitNewPost={this.handleSubmitNewPost} newPost={this.state.newPost} deletePost={this.deletePost} user={this.state.indivUser} />} />
           <Route path="/users" render={() => <UserIndex currentUserFunc={this.currentUser} users={this.state.users} />} />
-          <Route path="/login" component={LoginForm} />
+          <Route path="/login" render={() => <LoginForm handleSubmit={this.handleLogIn} handleChange={this.handleOnchange} email={this.state.email} password={this.state.password}/>} />
           <Route path="/signup" component={SignupForm} />
           <Route path="/" component={Landing} />
         </Switch>

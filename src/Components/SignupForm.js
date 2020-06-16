@@ -23,7 +23,28 @@ export default class SignupForm extends Component {
 
     handleSubmit = e => {
         e.preventDefault()
-        console.log(this.state)
+        
+        fetch(`http://localhost:3000/users`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify({
+                first_name: this.state.first_name,
+                last_name: this.state.last_name,
+                email: this.state.email,
+                age: this.state.age,
+                location: this.state.location,
+                occupation: this.state.occupation,
+                college: this.state.college,
+                picture: this.state.picture,
+                bio: this.state.bio,
+                password: this.state.password
+            })
+        })
+            .then(resp => resp.json())
+            .then(user => console.log(user))
     }
 
     render() {

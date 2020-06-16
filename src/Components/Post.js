@@ -30,6 +30,7 @@ export class Post extends Component {
     handleClick = () => {
         this.setState({ inputVisible: !this.state.inputVisible })
         if (this.state.newCommentInput !== ''){
+            const user = this.props.currentUser.id 
             const newCom = this.state.newCommentInput
             const postId = this.props.id 
             fetch(url, {
@@ -38,7 +39,7 @@ export class Post extends Component {
                     'Content-type': 'application/json',
                     Accept: 'application/json'
                 }, 
-                body: JSON.stringify({ content: newCom, post_id: postId, user_id: 141 })
+                body: JSON.stringify({ content: newCom, post_id: postId, user_id: user })
             }).then(res => res.json()).then(com => this.props.handleNewComment(com))
             this.setState({ newCommentInput: '' })
         }
@@ -73,6 +74,8 @@ export class Post extends Component {
         const postLikes = this.props.likes.filter(like => like.post_id === this.props.id)
         let numOfLikes = postLikes.length
         let commentsForThisPage = this.props.commentsFromState.filter(comment => comment.post_id == this.props.id)
+
+        console.log(this.props.currentUser)
 
         return (
             <div className="posts-inner-container">

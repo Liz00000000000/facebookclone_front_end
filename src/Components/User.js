@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import PostOnProfilePage from './PostOnProfilePage'
 
 const User = (props) => {
@@ -36,7 +36,7 @@ const User = (props) => {
                 <input name='newPost' onChange={props.handleOnchange} value={props.newPost} placeholder='What are you up to?'></input>
                 <button onClick={handleClick}>Submit</button>
                 <div className="inner-container">
-                    {props.posts.map(post => <PostOnProfilePage likes={props.likes} deletePost={props.deletePost} user={props.user} key={post.id} {...post} />)}
+                    {props.posts.map(post => <PostOnProfilePage currentUser={props.currentUser} likes={props.likes} deletePost={props.deletePost} user={props.user} key={post.id} {...post} />)}
                 </div>
             </div>
         </div>
