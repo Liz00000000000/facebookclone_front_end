@@ -17,14 +17,19 @@ export class Post extends Component {
 
     handleClick = () => this.setState({ inputVisible: !this.state.inputVisible })
 
-       render () {
-           console.log(this.props)
+    
+    render () {
+        const userid = this.props.user_id
+        const postWritter = this.props.users.find(user => user.id === userid)
+        const thisID = this.props.id 
+        const commentsArray = this.props.commentsFromState.filter(comment => comment.post_id == thisID)
+           console.log(commentsArray)
         return (
             <div className='post'>
                 <div className='user-container'>
-                    <img src={this.props.user.picture} alt={this.props.user.first_name}/>
-                    <span className='post-user-name'>{this.props.user.first_name} {this.props.user.last_name}</span>
-                    {/* <span className='post-date'> {this.props.date}</span> */}
+                    <img src={postWritter.picture} alt={postWritter.first_name}/>
+                    <span className='post-user-name'>{postWritter.first_name} {postWritter.last_name}</span>
+                    <span className='post-date'> {this.props.date}</span>
                 </div>
                 <p>{this.props.caption}</p>
                 <div className='post-interaction-container'>
@@ -32,6 +37,7 @@ export class Post extends Component {
                     <button className='add-like'> <i className='fad fa-heart'/>Like</button>
                  <button className='add-comment' onClick={this.handleClick} > {this.state.inputVisible ? 'Submit Comment' : 'Add Comment'}</button>
                     </div>
+                    {commentsArray.map(comment => <Comment users={this.props.users} key={comment.id} {...comment} />) }
                     {/* <div className='likes-container'>
                         <span className='like-count'>{this.likesArray ? this.likes : null }</span>
                     </div> */}
