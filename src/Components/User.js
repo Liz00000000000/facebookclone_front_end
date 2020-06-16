@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Post from './Post'
+import PostOnProfilePage from './PostOnProfilePage'
 
 const User = (props) => {
 
@@ -27,7 +27,7 @@ const User = (props) => {
             </div>
             <div className="post-container">
                 <div className="inner-container">
-                    {posts.map(post => <Post user={props.user} key={post.id} {...post} />)}
+                    {posts.map(post => <PostOnProfilePage user={props.user} key={post.id} {...post} />)}
                 </div>
             </div>
         </div>
