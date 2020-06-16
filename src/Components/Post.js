@@ -11,7 +11,7 @@ export class Post extends Component {
         // commentsArary = this.props.commentsFromState.filter(comment => comment.post_id == this.props.id
 
            this.state = {
-                inputVisible: true,
+                inputVisible: false,
                 newCommentInput: '',
                 com: null 
             } 
@@ -40,6 +40,7 @@ export class Post extends Component {
                 }, 
                 body: JSON.stringify({ content: newCom, post_id: postId, user_id: 141 })
             }).then(res => res.json()).then(com => this.props.handleNewComment(com))
+            this.setState({ newCommentInput: '' })
         }
     }
 
