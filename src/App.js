@@ -62,8 +62,7 @@ handleLike = (postID) => {
 
 deletePost = (id) => {
   const postID = id
-  this.setState({ posts: this.state.posts.filter(post => post.id != postID) })
-  fetch('http://localhost:3000/posts/' + id, {
+  fetch('http://localhost:3000/posts/' + postID, {
    method: 'DELETE', 
    headers: {
      "content-type": 'application/json',
