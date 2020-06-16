@@ -3,8 +3,14 @@ import PostOnProfilePage from './PostOnProfilePage'
 
 const User = (props) => {
 
-    const posts = props.user.posts
+    // const posts = props.user.posts
     // console.log(posts.length)
+
+
+    const handleClick = (e) => {
+     e.preventDefault()
+     props.handleSubmitNewPost(props.user.id)
+    }
 
     return(
         <div>
@@ -26,8 +32,11 @@ const User = (props) => {
                 </div>
             </div>
             <div className="post-container">
+                <h3>WRITE NEW POST</h3>
+                <input name='newPost' onChange={props.handleOnchange} value={props.newPost} placeholder='What are you up to?'></input>
+                <button onClick={handleClick}>Submit</button>
                 <div className="inner-container">
-                    {posts.map(post => <PostOnProfilePage user={props.user} key={post.id} {...post} />)}
+                    {props.posts.map(post => <PostOnProfilePage likes={props.likes} deletePost={props.deletePost} user={props.user} key={post.id} {...post} />)}
                 </div>
             </div>
         </div>

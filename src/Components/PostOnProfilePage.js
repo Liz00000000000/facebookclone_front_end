@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Comment from './Comment'
 
-export class Post extends Component {
+export class PostOnProfilePage extends Component {
     state = {
         inputVisible: false,
         newCommentInput: ''
@@ -17,10 +17,15 @@ export class Post extends Component {
 
     handleClick = () => this.setState({ inputVisible: !this.state.inputVisible })
 
+
+    removePost = (event) => {
+        this.props.deletePost(this.props.id)
+        event.target.parentNode.parentNode.parentNode.remove()
+    }
+
     
     render () {
    
-           console.log(this.props)
         return (
             <div className='post'>
                 <div className='user-container'>
@@ -32,6 +37,7 @@ export class Post extends Component {
                 <div className='post-interaction-container'>
                     <div className='btns-container'> 
                     <button className='add-like'> <i className='fad fa-heart'/>Like</button>
+                   <button onClick={this.removePost}>Delete Post</button>
                  <button className='add-comment' onClick={this.handleClick} > {this.state.inputVisible ? 'Submit Comment' : 'Add Comment'}</button>
                     </div>
                     {/* {commentsArray.map(comment => <Comment users={this.props.users} key={comment.id} {...comment} />) } */}
@@ -39,13 +45,13 @@ export class Post extends Component {
                         <span className='like-count'>{this.likesArray ? this.likes : null }</span>
                     </div> */}
                 </div>
-                {/* <div className='comment-container'>
-                {this.state.inputVisible ? <input onChange={this.handleOnChange} name='newCommentInput' placeholder='Comment...' value={this.state.newCommentInput}></input> : null }
-                {this.props.comments ? this.props.comments.map(comment =>  <Comment users={this.props.users} replies={this.props.replies} key={comment.id} {...comment} /> ) : null }
-                </div> */}
+                <div className='comment-container'>
+                {/* {this.state.inputVisible ? <input onChange={this.handleOnChange} name='newCommentInput' placeholder='Comment...' value={this.state.newCommentInput}></input> : null } */}
+                {/* {this.props.comments ? this.props.comments.map(comment =>  <Comment users={this.props.users} replies={this.props.replies} key={comment.id} {...comment} /> ) : null } */}
+                </div>
             </div>
         )
        }
 }
 
-export default Post
+export default PostOnProfilePage
