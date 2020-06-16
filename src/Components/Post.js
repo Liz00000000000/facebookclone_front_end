@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-// import Comment from './Comment'
+import Comment from './Comment'
 
 const url = 'http://localhost:3000/comments'
 
@@ -72,7 +72,7 @@ export class Post extends Component {
         const postWritter = this.props.users.find(user => user.id === userid)
         const postLikes = this.props.likes.filter(like => like.post_id === this.props.id)
         let numOfLikes = postLikes.length
-        // let commentsForThisPage = this.props.commentsFromState.filter(comment => comment.post_id == this.props.id)
+        let commentsForThisPage = this.props.commentsFromState.filter(comment => comment.post_id == this.props.id)
 
         return (
             <div className="posts-inner-container">
@@ -88,21 +88,19 @@ export class Post extends Component {
                         <div className='btns-container'> 
                         <button className='add-like' onClick={() => this.props.handleLike(this.props.id)}> <i className='fad fa-heart'/>Like</button>
                     <button className='add-comment' onClick={this.handleClick} > {this.state.inputVisible ? 'Submit Comment' : 'Add Comment'}</button>
+                {commentsForThisPage.map(comment => <Comment users={this.props.users} key={comment.id} {...comment} />) }
+                                        <div className='likes-container'>
+                                            <span className='like-count'>{this.likesArray ? this.likes : null }</span>
+                                        </div> 
+                                     </div>
+                                    <div className='comment-container'>
+                                    {this.state.inputVisible ? <input onChange={this.handleOnChange} className="newComment" name='newCommentInput' placeholder='Comment...' value={this.state.newCommentInput}></input> : null }
+                                    </div> 
                         </div>
                     </div>
-                </div>
             </div>
         )
        }
 }
 
 export default Post
-
-{/* {commentsForThisPage.map(comment => <Comment users={this.props.users} key={comment.id} {...comment} />) } */}
-                        {/* <div className='likes-container'>
-                            <span className='like-count'>{this.likesArray ? this.likes : null }</span>
-                        </div> */}
-                    {/* </div>
-                    <div className='comment-container'>
-                    {this.state.inputVisible ? <input onChange={this.handleOnChange} className="newComment" name='newCommentInput' placeholder='Comment...' value={this.state.newCommentInput}></input> : null }
-                    </div> */}
