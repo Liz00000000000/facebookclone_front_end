@@ -25,7 +25,7 @@ class App extends Component {
     loggedIn: false,
     email: '',
     password: '',
-    userLoggedIn: {}
+    userLoggedIn: null
     // seePostsOnly: true
   }
 
@@ -104,20 +104,24 @@ handleLogIn = (e) => {
 
 
 submitPost = (obj, postID) => {
-  console.log(obj, postID)
-  const user = this.state.currentUser.id 
-  fetch('http://localhost:3000/comments', {
-    method: 'POST',
-    headers: {
-      'content-type': 'application/json',
-      accept: 'application/json'
-    },
-    body: JSON.stringify({
-      content: obj, 
-      post_id: postID,
-      user_id: user
-    })
-  }).then(res => res.json()).then(newCom => this.setState({ comments: [...this.state.comments, newCom]}))
+  if( this.state.userLoggedIn != null ) {
+        console.log(obj, postID)
+        const user = this.state.currentUser.id 
+        fetch('http://localhost:3000/comments', {
+          method: 'POST',
+          headers: {
+            'content-type': 'application/json',
+            accept: 'application/json'
+          },
+          body: JSON.stringify({
+            content: obj, 
+            post_id: postID,
+            user_id: user
+          })
+        }).then(res => res.json()).then(newCom => this.setState({ comments: [...this.state.comments, newCom]}))
+      } else {
+        alert('Must be signed in to leave a comment')
+      }
 }
 
   render() {

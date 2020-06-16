@@ -17,10 +17,11 @@ export class PostOnProfilePage extends Component {
 
     handleClick = (e) => {
         e.preventDefault()
-        if (this.state.comment != ''){
-            this.props.submitPost(this.state.comment, this.props.id)
-        }
-        this.setState({ inputVisible: !this.state.inputVisible })
+        if (this.props)
+            if (this.state.comment != ''){
+                this.props.submitPost(this.state.comment, this.props.id)
+            }
+            this.setState({ inputVisible: !this.state.inputVisible })
 }
 
     removePost = (event) => {
