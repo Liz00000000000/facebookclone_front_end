@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import Comment from './Comment'
 
+const url = 'http://localhost:3000/comments'
+
 export class Post extends Component {
     state = {
         inputVisible: false,
         newCommentInput: ''
-    }
-
-
+    } 
     // likesArray = this.props.likes.filter(like => like.post_id === this.props.id )
     // likes = this.likesArray.length + ' Likes <3'
     // user = this.props.users.find(user => user.id === this.props.user_id )
@@ -15,8 +15,26 @@ export class Post extends Component {
 
     handleOnChange = event => this.setState({ [event.target.name]: event.target.value })
 
-    handleClick = () => this.setState({ inputVisible: !this.state.inputVisible })
+    handleClick = () => {
+        this.setState({ inputVisible: !this.state.inputVisible })
+        if (this.state.newCommentInput !== ''){
+            const newCom = this.state.newCommentInput
+            const postId = this.props.id 
+            fetch(url, {
+                method: 'POST', 
+                headers: {
+                    'Content-type': 'application/json',
+                    Accept: 'application/json'
+                }, 
+                body: JSON.stringify({ content: newCom, post_id: postId, user_id: 141 })
+            }).then(res => res.json()).then(com => console.log(com))
+            this.setState({
+                newCommentInput: ''
+            })
+        }
+    }
 
+  
     
     render () {
         const userid = this.props.user_id
@@ -42,10 +60,9 @@ export class Post extends Component {
                         <span className='like-count'>{this.likesArray ? this.likes : null }</span>
                     </div> */}
                 </div>
-                {/* <div className='comment-container'>
+                <div className='comment-container'>
                 {this.state.inputVisible ? <input onChange={this.handleOnChange} name='newCommentInput' placeholder='Comment...' value={this.state.newCommentInput}></input> : null }
-                {this.props.comments ? this.props.comments.map(comment =>  <Comment users={this.props.users} replies={this.props.replies} key={comment.id} {...comment} /> ) : null }
-                </div> */}
+                </div>
             </div>
         )
        }
