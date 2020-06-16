@@ -7,6 +7,8 @@ import UserIndex from './Components/UserIndex';
 import { Route, Switch } from 'react-router-dom';
 import Landing from './Components/Landing';
 import User from './Components/User';
+import LoginForm from './Components/LoginForm'
+import SignupForm from './Components/SignupForm'
 
 
 class App extends Component {
@@ -50,6 +52,8 @@ currentUser = (id) => {
           {/* <Route path="/users/:id" component={User} /> */}
           <Route path="/users/:id" render={() => <User user={this.state.indivUser} />} />
           <Route path="/users" render={() => <UserIndex currentUserFunc={this.currentUser} users={this.state.users} />} />
+          <Route path="/login" component={LoginForm} />
+          <Route path="/signup" component={SignupForm} />
           <Route path="/" component={Landing} />
         </Switch>
       </div>

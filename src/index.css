@@ -58,8 +58,113 @@ table {
 
 /* Nav */
 nav {
-  background: red;
+  background: #8878FF;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
 }
+
+.inner-nav {
+  width: 95%;
+  max-width: 968px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+nav .logo a {
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #fff;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25);
+}
+
+nav .page-nav-container a {
+  font-size: 1.2rem;
+  text-decoration: none;
+}
+
+nav .page-nav-container a:first-of-type {
+  color: #fff;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25);
+  margin-right: 2rem;
+}
+
+nav .page-nav-container a:last-of-type {
+  color: #2E29FA;
+  background: #fff;
+  padding: .7rem 1.4rem;
+  border-radius: 5px;
+}
+
+/***** Login/Sign Up Form *****/
+.con-inner-container {
+  width: 95%;
+  max-width: 968px;
+  margin: 3rem auto;
+}
+
+.con-inner-container form {
+  width: 98%;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1.5rem;
+  border-radius: 5px;
+  box-shadow: 2px 6px 8px rgba(0,0,0,.15);
+}
+
+.con-inner-container form h1 {
+  margin-bottom: 1.5rem;
+  font-size: 2.5rem;
+  color: #3b3b3b;
+  font-family: 'Roboto', sans-serif;
+}
+
+.con-inner-container form input {
+  display: block;
+  width: 100%;
+  margin-bottom: 1.5rem;
+  min-height: 40px;
+}
+
+.con-inner-container form input[type="text"], .con-inner-container form input[type="password"] {
+  padding: 0 1rem !important;
+  border: 1px solid #8878FF;
+  font-size: 1.1rem;
+}
+
+.con-inner-container form input.name {
+  display: inline-block;
+  width: 49%;
+}
+
+.con-inner-container form input.name:first-of-type {
+  margin-right: 2%;
+}
+
+.con-inner-container form input[type="submit"] {
+  border: none;
+  border-radius: 5px;
+  background: #9183FF;
+  color: #fff;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25);
+  font-size: 1.25rem;
+}
+
+.con-inner-container form input[type="submit"]:hover {
+  cursor: pointer;
+}
+
+.con-inner-container form ::placeholder {
+  color: #5c5c5c;
+  font-size: 1.1rem;
+}
+
+/* Profile/Posts */
 
 .hero {
   width: 100%;
@@ -316,7 +421,7 @@ nav {
   height: 90vh;
   max-height: 300px;
   background: linear-gradient(to bottom, #8878FF, #9183FF);
-  padding-top: 3rem;
+  padding-top: 2rem;
 }
 
 .landing-hero .inner-container {
@@ -360,7 +465,6 @@ nav {
 
 .intro-section {
   position: relative;
-  background: #fff;
 }
 
 .feature-container {
@@ -378,6 +482,7 @@ nav {
 
 .feature-container .individual-feature {
   display: flex;
+  margin-bottom: .5rem;
 }
 
 .individual-feature .photo-container {
@@ -390,4 +495,65 @@ nav {
 
 .individual-feature .content-container {
   flex-basis: 60%;
+  padding: 0 1rem;
+}
+
+.individual-feature .content-container h2 {
+  padding-top: 1rem;
+  font-family: 'Roboto', sans-serif;
+  color: #2E29FA;
+  font-size: 1.1rem;
+  margin-bottom: .75rem;
+}
+
+.individual-feature .content-container p {
+  line-height: 1.5;
+  color: #5c5c5c;
+  font-family: 'Roboto', sans-serif;
+}
+
+.landing-page .additional-section {
+  margin-top: 15rem;
+}
+
+.landing-page .additional-section .inner-container {
+  width: 95%;
+  max-width: 968px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.additional-section .item-container {
+  display: flex;
+  margin-bottom: 3rem;
+}
+
+.additional-section .img-container {
+  flex-basis: 40%;
+}
+
+.additional-section .img-container img {
+  max-width: 100%;
+}
+
+.additional-section .content-container {
+  flex-basis: 60%;
+  padding-left: 3rem;
+}
+
+.additional-section .content-container h4 {
+  font-size: 1.75rem;
+  letter-spacing: 1px;
+  font-weight: 700;
+  font-family: 'Roboto', sans-serif;
+  color: #2E29FA;
+  margin-bottom: 1rem;
+  margin-top: 2rem;
+}
+
+.additional-section .content-container p {
+  font-size: 1.1rem;
+  line-height: 1.5;
+  color: #5c5c5c;
+  font-family: 'Roboto', sans-serif;
 }
