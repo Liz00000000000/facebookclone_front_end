@@ -12,6 +12,8 @@ const User = (props) => {
      props.handleSubmitNewPost(props.user.id)
     }
 
+
+    console.log(props.users)
     return(
         <div>
             <div className="hero"></div>
@@ -36,7 +38,7 @@ const User = (props) => {
                 <input name='newPost' onChange={props.handleOnchange} value={props.newPost} placeholder='What are you up to?'></input>
                 <button onClick={handleClick}>Submit</button>
                 <div className="inner-container">
-                    {props.posts.map(post => <PostOnProfilePage currentUser={props.currentUser} likes={props.likes} deletePost={props.deletePost} user={props.user} key={post.id} {...post} />)}
+                    {props.posts.map(post => <PostOnProfilePage comments={props.comments} submitPost={props.submitPost} currentUser={props.currentUser} likes={props.likes} deletePost={props.deletePost} users={props.users} key={post.id} {...post} />)}
                 </div>
             </div>
         </div>
