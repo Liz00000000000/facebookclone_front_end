@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
-import UsersHome from './Components/UsersHome'
 import Nav from './Components/Nav'
 import UserIndex from './Components/UserIndex';
 import { Route, Switch } from 'react-router-dom';
@@ -92,7 +90,6 @@ handleOnchange = (event) => {
 }
 
   render() {
-    console.log(this.state)
     
     return (
       <div className="App">
