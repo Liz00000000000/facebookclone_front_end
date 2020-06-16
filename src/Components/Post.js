@@ -69,25 +69,27 @@ export class Post extends Component {
         let commentsForThisPage = this.props.commentsFromState.filter(comment => comment.post_id == this.props.id)
 
         return (
-            <div className='post'>
-                <div className='user-container'>
-                    <img src={postWritter.picture} alt={postWritter.first_name}/>
-                    <span className='post-user-name'>{postWritter.first_name} {postWritter.last_name}</span>
-                    <span className='post-date'> {this.props.date}</span>
-                </div>
-                <p>{this.props.caption}</p>
-                <div className='post-interaction-container'>
-                    <div className='btns-container'> 
-                    <button className='add-like'> <i className='fad fa-heart'/>Like</button>
-                 <button className='add-comment' onClick={this.handleClick} > {this.state.inputVisible ? 'Submit Comment' : 'Add Comment'}</button>
+            <div className="posts-inner-container">
+                <div className='post'>
+                    <div className='user-container'>
+                        <img src={postWritter.picture} alt={postWritter.first_name}/>
+                        <span className='post-user-name'>{postWritter.first_name} {postWritter.last_name}</span>
+                        <span className='post-date'> {this.props.date}</span>
                     </div>
-                    {commentsForThisPage.map(comment => <Comment users={this.props.users} key={comment.id} {...comment} />) }
-                    {/* <div className='likes-container'>
-                        <span className='like-count'>{this.likesArray ? this.likes : null }</span>
-                    </div> */}
-                </div>
-                <div className='comment-container'>
-                {this.state.inputVisible ? <input onChange={this.handleOnChange} name='newCommentInput' placeholder='Comment...' value={this.state.newCommentInput}></input> : null }
+                    <p>{this.props.caption}</p>
+                    <div className='post-interaction-container'>
+                        <div className='btns-container'> 
+                        <button className='add-like'> <i className='fad fa-heart'/>Like</button>
+                    <button className='add-comment' onClick={this.handleClick} > {this.state.inputVisible ? 'Submit Comment' : 'Add Comment'}</button>
+                        </div>
+                        {commentsForThisPage.map(comment => <Comment users={this.props.users} key={comment.id} {...comment} />) }
+                        {/* <div className='likes-container'>
+                            <span className='like-count'>{this.likesArray ? this.likes : null }</span>
+                        </div> */}
+                    </div>
+                    <div className='comment-container'>
+                    {this.state.inputVisible ? <input onChange={this.handleOnChange} className="newComment" name='newCommentInput' placeholder='Comment...' value={this.state.newCommentInput}></input> : null }
+                    </div>
                 </div>
             </div>
         )

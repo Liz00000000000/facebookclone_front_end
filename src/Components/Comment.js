@@ -21,7 +21,7 @@ class Comment extends Component {
                 accept: 'application/json'
             }
         })
-        e.target.parentNode.remove()
+        e.target.parentNode.parentNode.remove()
     }
 
 
@@ -34,9 +34,11 @@ class Comment extends Component {
                   {commentWriter.first_name} {commentWriter.last_name}
                 </span>
                 <p>{this.props.content}</p>
+                <div className="btn-container">
                 <button onClick={this.handleDelete}>Delete Comment</button>
-                <button className='add-reply' onClick={this.handleClick}>{this.state.inputVisible ? 'Submit Reply' : 'Add Reply'}</button> 
-                {this.state.inputVisible ? <input onChange={this.handleOnChange} name='newReplyInput' placeholder='Comment...' value={this.state.newCommentInput}></input> : null }
+                {/* <button className='add-reply' onClick={this.handleClick}>{this.state.inputVisible ? 'Submit Reply' : 'Add Reply'}</button> 
+                {this.state.inputVisible ? <input onChange={this.handleOnChange} name='newReplyInput' placeholder='Comment...' value={this.state.newCommentInput}></input> : null } */}
+                </div>
                {/* {this.props.replies.map(rep => <Reply users={this.props.users} key={rep.id} {...rep} /> )} */}
             </div>
         )
