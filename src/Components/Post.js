@@ -4,10 +4,22 @@ import Comment from './Comment'
 const url = 'http://localhost:3000/comments'
 
 export class Post extends Component {
-    state = {
-        inputVisible: false,
-        newCommentInput: ''
-    } 
+
+    constructor (props) {
+        super(props)
+
+        // commentsArary = this.props.commentsFromState.filter(comment => comment.post_id == this.props.id
+
+           this.state = {
+                inputVisible: false,
+                newCommentInput: '',
+                commentsArray: this.props.commentsFromState.filter(comment => comment.post_id == this.props.id)
+            } 
+   }
+
+
+//    commentsForThisPage = this.props.commentsFromState.filter(comment => comment.post_id == this.props.id
+
     // likesArray = this.props.likes.filter(like => like.post_id === this.props.id )
     // likes = this.likesArray.length + ' Likes <3'
     // user = this.props.users.find(user => user.id === this.props.user_id )
@@ -27,20 +39,36 @@ export class Post extends Component {
                     Accept: 'application/json'
                 }, 
                 body: JSON.stringify({ content: newCom, post_id: postId, user_id: 141 })
-            }).then(res => res.json()).then(com => console.log(com))
+            }).then(res => res.json()).then(com => this.doSetSate(com))
             this.setState({
                 newCommentInput: ''
             })
         }
     }
 
-  
-    
+    doSetSate = (comment) => {
+    const thisID = this.props.id 
+    const commentsArray = this.props.commentsFromState.filter(comment => comment.post_id == thisID)
+    this.setState({commentsArray: [...commentsArray, comment] })
+     }
+
+    //  componentDidMount(){
+    //     const thisID = this.props.id 
+    //     this.setState({ commentsArray: this.props.commentsFromState.filter(comment => comment.post_id == thisID) })
+    //  }
+
+
+    //  componentDidUpdate(prevProps){
+    //    const thisID = this.props.id 
+    //    if (this.state.commentsArray != prevProps.commentsFromState.filter(comment => comment.post_id == thisID)){
+    //        this.setState({ commentsArray: this.props.commentsFromState.filter(comment => comment.post_id == thisID) })
+    //    }
+    //  }
+
     render () {
         const userid = this.props.user_id
         const postWritter = this.props.users.find(user => user.id === userid)
-        const thisID = this.props.id 
-        const commentsArray = this.props.commentsFromState.filter(comment => comment.post_id == thisID)
+        const commentsForThisPage = this.props.commentsFromState.filter(comment => comment.post_id == this.props.id)
 
         return (
             <div className='post'>
@@ -55,7 +83,7 @@ export class Post extends Component {
                     <button className='add-like'> <i className='fad fa-heart'/>Like</button>
                  <button className='add-comment' onClick={this.handleClick} > {this.state.inputVisible ? 'Submit Comment' : 'Add Comment'}</button>
                     </div>
-                    {commentsArray.map(comment => <Comment users={this.props.users} key={comment.id} {...comment} />) }
+                    {commentsForThisPage.map(comment => <Comment users={this.props.users} key={comment.id} {...comment} />) }
                     {/* <div className='likes-container'>
                         <span className='like-count'>{this.likesArray ? this.likes : null }</span>
                     </div> */}
