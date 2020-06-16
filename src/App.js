@@ -8,6 +8,8 @@ import { Route, Switch } from 'react-router-dom';
 import Landing from './Components/Landing';
 import User from './Components/User';
 import Post from './Components/Post'
+import LoginForm from './Components/LoginForm'
+import SignupForm from './Components/SignupForm'
 
 
 class App extends Component {
@@ -52,6 +54,8 @@ currentUser = (id) => {
           <Route path='/posts' render={() => this.state.posts.map(post => <Post key={post.id} commentsFromState={this.state.comments} {...post} users={this.state.users} />) } />
           <Route path="/users/:id" render={() => <User user={this.state.indivUser} />} />
           <Route path="/users" render={() => <UserIndex currentUserFunc={this.currentUser} users={this.state.users} />} />
+          <Route path="/login" component={LoginForm} />
+          <Route path="/signup" component={SignupForm} />
           <Route path="/" component={Landing} />
         </Switch>
       </div>
