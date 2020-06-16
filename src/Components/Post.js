@@ -13,7 +13,7 @@ export class Post extends Component {
            this.state = {
                 inputVisible: false,
                 newCommentInput: '',
-                commentsArray: this.props.commentsFromState.filter(comment => comment.post_id == this.props.id)
+                com: null 
             } 
    }
 
@@ -39,18 +39,16 @@ export class Post extends Component {
                     Accept: 'application/json'
                 }, 
                 body: JSON.stringify({ content: newCom, post_id: postId, user_id: 141 })
-            }).then(res => res.json()).then(com => this.doSetSate(com))
-            this.setState({
-                newCommentInput: ''
-            })
+            }).then(res => res.json()).then(com => this.props.handleNewComment(com))
         }
     }
 
-    doSetSate = (comment) => {
-    const thisID = this.props.id 
-    const commentsArray = this.props.commentsFromState.filter(comment => comment.post_id == thisID)
-    this.setState({commentsArray: [...commentsArray, comment] })
-     }
+    // displayComment = (obj) => {
+    //     console.log(obj)
+    //     return(
+
+    //     )
+    // }
 
     //  componentDidMount(){
     //     const thisID = this.props.id 
@@ -68,7 +66,7 @@ export class Post extends Component {
     render () {
         const userid = this.props.user_id
         const postWritter = this.props.users.find(user => user.id === userid)
-        const commentsForThisPage = this.props.commentsFromState.filter(comment => comment.post_id == this.props.id)
+        let commentsForThisPage = this.props.commentsFromState.filter(comment => comment.post_id == this.props.id)
 
         return (
             <div className='post'>

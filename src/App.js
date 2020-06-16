@@ -43,6 +43,10 @@ currentUser = (id) => {
   })
 }
 
+handleNewComment = (newCom) => {
+  this.setState({ comments: [...this.state.comments, newCom] }) 
+}
+
   render() {
     
     return (
@@ -51,7 +55,7 @@ currentUser = (id) => {
         {/* <UsersHome/> */}
         <Switch>
           {/* <Route path="/users/:id" component={User} /> */}
-          <Route path='/posts' render={() => this.state.posts.map(post => <Post key={post.id} commentsFromState={this.state.comments} {...post} users={this.state.users} />) } />
+          <Route path='/posts' render={() => this.state.posts.map(post => <Post handleNewComment={this.handleNewComment} key={post.id} commentsFromState={this.state.comments} {...post} users={this.state.users} />) } />
           <Route path="/users/:id" render={() => <User user={this.state.indivUser} />} />
           <Route path="/users" render={() => <UserIndex currentUserFunc={this.currentUser} users={this.state.users} />} />
           <Route path="/login" component={LoginForm} />
