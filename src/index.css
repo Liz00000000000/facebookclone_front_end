@@ -85,6 +85,7 @@ nav .logo a {
 nav .page-nav-container a {
   font-size: 1.2rem;
   text-decoration: none;
+  font-family: 'Roboto', sans-serif;
 }
 
 nav .page-nav-container a:first-of-type {
@@ -557,3 +558,30 @@ nav .page-nav-container a:last-of-type {
   color: #5c5c5c;
   font-family: 'Roboto', sans-serif;
 }
+
+/* User index */
+
+.userContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 95%;
+  max-width: 968px;
+  margin: 4rem auto;
+}
+
+.userCard {
+  margin: 1rem 1.25rem;
+  background: #f7f7f7;
+  padding: 1rem;
+  border-radius: 5px;
+  box-shadow: 2px 4px 8px rgba(0,0,0,.15);
+  text-decoration: none;
+}
+
+.userCard h2 {
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  font-family: 'Roboto', sans-serif;
+}
+
