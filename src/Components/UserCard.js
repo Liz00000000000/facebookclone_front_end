@@ -8,7 +8,11 @@ export default class extends Component {
     }
 
     handleClick = () => {
+        if (this.props.loggedIn === true){
         this.props.currentUserFunc(this.props.id)
+        } else {
+            alert('MUST BE LOGGED IN')
+        }
     }
 
     render() {

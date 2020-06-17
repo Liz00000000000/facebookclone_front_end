@@ -33,7 +33,7 @@ export class PostOnProfilePage extends Component {
     render () {
         let comments = this.props.comments.filter(comment => comment.post_id === this.props.id)
         let user = this.props.users.find(user => user.id === this.props.user_id)
-        // console.log(this.props.users)
+        console.log(this.props)
         return (
             <div className='post'>
                 <div className='user-container'>
@@ -45,7 +45,7 @@ export class PostOnProfilePage extends Component {
                 <div className='post-interaction-container'>
                     <div className='btns-container'> 
                     <button className='add-like'> <i className='fad fa-heart'/>Like</button>
-                   <button onClick={this.removePost}>Delete Post</button>
+                    {this.props.currentUser.id === user.id  ? <button onClick={this.removePost}>Delete Post</button> : null }
                  <button className='add-comment' onClick={this.handleClick} > {this.state.inputVisible ? 'Submit Comment' : 'Add Comment'}</button>
                    {this.state.inputVisible ? <input name='comment' onChange={this.handleOnChange} value={this.state.comment}></input> : null }
                     </div>

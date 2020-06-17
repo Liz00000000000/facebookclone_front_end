@@ -7,7 +7,7 @@ export default class UserIndex extends Component {
 
         return (
             <div className="userContainer">
-              {this.props.users.map(user => <UserCard currentUserFunc={this.props.currentUserFunc} key={user.id} {...user}/>)}
+              {this.props.users.map(user => <UserCard loggedIn={this.props.loggedIn} currentUserFunc={this.props.currentUserFunc} key={user.id} {...user}/>)}
             </div>
         )
     }
