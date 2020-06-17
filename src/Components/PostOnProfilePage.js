@@ -51,7 +51,7 @@ export class PostOnProfilePage extends Component {
     render () {
 
         console.log(this.props.comments)
-        
+
         let comments = this.props.comments.filter(comment => comment.post_id === this.props.id)
         let user = this.props.users.find(user => user.id === this.props.user_id)
         let likes = this.props.likes.filter(like => like.post_id === this.props.id)
@@ -74,7 +74,9 @@ export class PostOnProfilePage extends Component {
                  <button className='add-comment' onClick={this.handleClick} > {this.state.inputVisible ? 'Submit Comment' : 'Add Comment'}</button>
                    {this.state.inputVisible ? <input name='comment' onChange={this.handleOnChange} value={this.state.comment}></input> : null }
                     {numOfLikes} Likes </div>
+                    <div className='comment-container'>
                     {comments.map(comment => <CommentInProfile users={this.props.users} key={comment.id} {...comment} />) }
+                    </div>
                     {/* <div className='likes-container'>
                         <span className='like-count'>{this.likesArray ? this.likes : null }</span>
                     </div> */}

@@ -712,3 +712,6 @@ nav .page-nav-container.logged-out a:last-of-type {
   min-height: 35px;
   width: 100%;
 }
+.btns-container{
+  width: 100%;
+}
