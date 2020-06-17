@@ -32,11 +32,13 @@ const User = (props) => {
                 </div>
             </div>
             <div className="post-container">
-                <h3>WRITE NEW POST</h3>
-                <input name='newPost' onChange={props.handleOnchange} value={props.newPost} placeholder='What are you up to?'></input>
-                <button onClick={handleClick}>Submit</button>
+                <div className="new-post-container">
+                    <h3>Write New Post</h3>
+                    <input type="text" name='newPost' onChange={props.handleOnchange} value={props.newPost} placeholder='What are you up to?'></input>
+                    <button onClick={handleClick}>Submit</button>
+                </div>
                 <div className="inner-container">
-                    {props.posts.map(post => <PostOnProfilePage likes={props.likes} deletePost={props.deletePost} user={props.user} key={post.id} {...post} />)}
+                    {props.posts.map(post => <PostOnProfilePage currentUser={props.currentUser} likes={props.likes} deletePost={props.deletePost} user={props.user} key={post.id} {...post} />)}
                 </div>
             </div>
         </div>

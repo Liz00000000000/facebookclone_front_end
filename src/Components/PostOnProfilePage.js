@@ -37,8 +37,8 @@ export class PostOnProfilePage extends Component {
                 <div className='post-interaction-container'>
                     <div className='btns-container'> 
                     <button className='add-like'> <i className='fad fa-heart'/>Like</button>
-                   <button onClick={this.removePost}>Delete Post</button>
-                 <button className='add-comment' onClick={this.handleClick} > {this.state.inputVisible ? 'Submit Comment' : 'Add Comment'}</button>
+                    <button className='add-comment' onClick={this.handleClick} > {this.state.inputVisible ? 'Submit Comment' : 'Add Comment'}</button>
+                    <button className="delete-post" onClick={this.removePost}>Delete Post</button>
                     </div>
                     {/* {commentsArray.map(comment => <Comment users={this.props.users} key={comment.id} {...comment} />) } */}
                     {/* <div className='likes-container'>
