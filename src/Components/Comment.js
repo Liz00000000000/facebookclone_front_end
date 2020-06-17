@@ -27,7 +27,7 @@ class Comment extends Component {
 
     render() {
         let commentWriter = this.props.users.find(user => user.id === this.props.user_id )
-        console.log(this.props)
+        // console.log(this.props)
         return (
             <div className='comment'>
                 <span className='commenter-name'>

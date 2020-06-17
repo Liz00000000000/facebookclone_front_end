@@ -50,7 +50,7 @@ export class PostOnProfilePage extends Component {
     
     render () {
 
-        console.log(this.props.comments)
+        // console.log(this.props.comments)
         
         let comments = this.props.comments.filter(comment => comment.post_id === this.props.id)
         let user = this.props.users.find(user => user.id === this.props.user_id)
