@@ -16,7 +16,7 @@ class Nav extends Component {
 
     loggedInNav = () => {
         return <div className="page-nav-container logged-in">
-            <NavLink to={`users/${this.props.user.id}`}>Profile</NavLink>    
+            <NavLink exact to={`users/${this.props.user.id}`}>Profile</NavLink>    
             <NavLink to="/posts">Posts</NavLink>
             <NavLink to="/users">Users</NavLink>
             <NavLink onClick={this.props.handleLogout} to="/">Log Out</NavLink>
