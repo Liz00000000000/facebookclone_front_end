@@ -22,16 +22,19 @@ const User = (props) => {
 
 
     let posts = props.posts.filter(post => post.user_id === props.user.id)
+    let numOfPost = posts.length
+
+    let friends = props.friends.filter(friend => friend.user_id_1 === props.user.id || friend.user_id_2 === props.user.id )
     
-    console.log(props.comments)
+    console.log(props.friends)
     
     return(
         <div>
             <div className="hero"></div>
             <div className="user-info">
                 <div className="left-container">
-                    <div><span>50</span> friends</div>
-                    <div><span>1</span> posts</div>
+                    <div><span>{friends.length}</span> friends</div>
+                    <div><span>{numOfPost}</span> posts</div>
                     {/* <div><span>{posts.length}</span> posts</div> */}
     <div>Age: <span>{props.user.age}</span></div>
                     <div>Job: <span>{props.user.occupation}</span></div>
