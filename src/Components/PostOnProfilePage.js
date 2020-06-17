@@ -49,12 +49,16 @@ export class PostOnProfilePage extends Component {
 
     
     render () {
+
+        console.log(this.props.comments)
+        
         let comments = this.props.comments.filter(comment => comment.post_id === this.props.id)
         let user = this.props.users.find(user => user.id === this.props.user_id)
         let likes = this.props.likes.filter(like => like.post_id === this.props.id)
-        console.log(likes.length)
+
         let numOfLikes = likes.length + this.state.addedLikes
-        console.log(numOfLikes)
+
+
         return (
             <div className='post'>
                 <div className='user-container'>

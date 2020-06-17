@@ -22,7 +22,8 @@ const User = (props) => {
 
 
     let posts = props.posts.filter(post => post.user_id === props.user.id)
-
+    
+    console.log(props.comments)
     
     return(
         <div>
