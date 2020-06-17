@@ -22,15 +22,19 @@ const User = (props) => {
 
 
     let posts = props.posts.filter(post => post.user_id === props.user.id)
+    let numOfPost = posts.length
 
+    let friends = props.friends.filter(friend => friend.user_id_1 === props.user.id || friend.user_id_2 === props.user.id )
+    
+    console.log(props.friends)
     
     return(
         <div>
             <div className="hero"></div>
             <div className="user-info">
                 <div className="left-container">
-                    <div><span>50</span> friends</div>
-                    <div><span>1</span> posts</div>
+                    <div><span>{friends.length}</span> friends</div>
+                    <div><span>{numOfPost}</span> posts</div>
                     {/* <div><span>{posts.length}</span> posts</div> */}
     <div>Age: <span>{props.user.age}</span></div>
                     <div>Job: <span>{props.user.occupation}</span></div>
@@ -49,6 +53,7 @@ const User = (props) => {
                     {posts.map(post => <PostOnProfilePage likes={props.likes}  currentUser={props.currentUser} comments={props.comments} submitPost={props.submitPost} currentUser={props.currentUser} likes={props.likes} deletePost={props.deletePost} users={props.users} key={post.id} {...post} />)}
                 </div>
             </div>
+            {props.currentUser.id === props.user.id ? <button onClick={() => props.handleDelete(props.user.id)}>Delete Account</button> : null }
         </div>
     )
 }

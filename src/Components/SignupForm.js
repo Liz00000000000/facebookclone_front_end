@@ -44,7 +44,20 @@ export default class SignupForm extends Component {
             })
         })
             .then(resp => resp.json())
-            .then(user => console.log(user))
+            .then(user => this.props.addUsertoState(user))
+            .then(() => this.props.accontCreated())
+            this.setState({
+                first_name: '',
+                last_name: '',
+                email: '',
+                age: '',
+                location: '',
+                occupation: '',
+                college: '',
+                picture: '',
+                bio: '',
+                password: ''
+            })
     }
 
     render() {
@@ -54,9 +67,9 @@ export default class SignupForm extends Component {
                 <form onSubmit={this.handleSubmit} >
                     <h1>Sign Up</h1>
 
-                    <input className="name" type="text" placeholder="First Name" name="first_name" onChange={this.handleChange} />
+                    <input className="name" type="text" placeholder="First Name" name="first_name" value={this.state.first_name} onChange={this.handleChange} />
 
-                    <input className="name" type="text" placeholder="Last Name" name="last_name" onChange={this.handleChange} />
+                    <input className="name" type="text" placeholder="Last Name" name="last_name" value={this.state.last_name} onChange={this.handleChange} />
 
                     <input className="email" type="text" name="email" placeholder="Email" value={this.state.email} onChange={this.handleChange} />
 
