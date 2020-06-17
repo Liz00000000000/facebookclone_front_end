@@ -44,7 +44,7 @@ export class PostOnProfilePage extends Component {
             })
         })
         
-        this.setState({ likes: this.state.likes + 1 })
+        this.setState({ addedLikes: parseInt(this.state.addedLikes) + parseInt(1) })
     }
 
     
@@ -52,7 +52,9 @@ export class PostOnProfilePage extends Component {
         let comments = this.props.comments.filter(comment => comment.post_id === this.props.id)
         let user = this.props.users.find(user => user.id === this.props.user_id)
         let likes = this.props.likes.filter(like => like.post_id === this.props.id)
-        let numOfLikes = likes.length + this.state.likes 
+        console.log(likes.length)
+        let numOfLikes = likes.length + this.state.addedLikes
+        console.log(numOfLikes)
         return (
             <div className='post'>
                 <div className='user-container'>
