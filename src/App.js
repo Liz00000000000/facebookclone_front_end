@@ -140,7 +140,7 @@ submitPost = (obj, postID) => {
 }
 
   render() {
-    console.log(this.state.handleLogOut)
+    // console.log(this.state.handleLogOut)
     return (
       <div className="App">
         <Nav handleLogout={this.handleLogOut} loggedIn={this.state.loggedIn} user={this.state.currentUser} />
