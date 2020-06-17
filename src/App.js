@@ -25,7 +25,7 @@ class App extends Component {
     loggedIn: false,
     email: '',
     password: '',
-    userLoggedIn: {}
+    userLoggedIn: null
     // seePostsOnly: true
   }
 
@@ -102,6 +102,28 @@ handleLogIn = (e) => {
   }
 }
 
+
+submitPost = (obj, postID) => {
+  if( this.state.userLoggedIn != null ) {
+        console.log(obj, postID)
+        const user = this.state.currentUser.id 
+        fetch('http://localhost:3000/comments', {
+          method: 'POST',
+          headers: {
+            'content-type': 'application/json',
+            accept: 'application/json'
+          },
+          body: JSON.stringify({
+            content: obj, 
+            post_id: postID,
+            user_id: user
+          })
+        }).then(res => res.json()).then(newCom => this.setState({ comments: [...this.state.comments, newCom]}))
+      } else {
+        alert('Must be signed in to leave a comment')
+      }
+}
+
   render() {
     // console.log(this.state.loggedIn)
     return (
@@ -111,7 +133,7 @@ handleLogIn = (e) => {
         <Switch>
           {/* <Route path="/users/:id" component={User} /> */}
           <Route path='/posts' render={() => this.state.posts.map(post => <Post currentUser={this.state.currentUser} likes={this.state.likes} handleLike={this.handleLike} handleNewComment={this.handleNewComment} key={post.id} commentsFromState={this.state.comments} {...post} users={this.state.users} />) } />
-          <Route path="/users/:id" render={() => <User currentUser={this.state.currentUser} likes={this.state.likes} posts={this.state.posts} handleOnchange={this.handleOnchange} handleSubmitNewPost={this.handleSubmitNewPost} newPost={this.state.newPost} deletePost={this.deletePost} user={this.state.indivUser} />} />
+          <Route path="/users/:id" render={() => <User users={this.state.users} comments={this.state.comments} submitPost={this.submitPost} currentUser={this.state.currentUser} likes={this.state.likes} posts={this.state.posts} handleOnchange={this.handleOnchange} handleSubmitNewPost={this.handleSubmitNewPost} newPost={this.state.newPost} deletePost={this.deletePost} user={this.state.indivUser} />} />
           <Route path="/users" render={() => <UserIndex currentUserFunc={this.currentUser} users={this.state.users} />} />
           <Route path="/login" render={() => <LoginForm handleSubmit={this.handleLogIn} handleChange={this.handleOnchange} email={this.state.email} password={this.state.password}/>} />
           <Route path="/signup" component={SignupForm} />
