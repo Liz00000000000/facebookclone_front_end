@@ -51,6 +51,12 @@ handleNewComment = (newCom) => {
   this.setState({ comments: [...this.state.comments, newCom] }) 
 }
 
+handleLogOut = () => {
+  this.setState({
+    loggedIn: false
+  })
+}
+
 handleLike = (postID) => {
   console.log(postID)
   fetch('http://localhost:3000/likes', {
@@ -134,10 +140,10 @@ submitPost = (obj, postID) => {
 }
 
   render() {
-    // console.log(this.state.newPost)
+    console.log(this.state.handleLogOut)
     return (
       <div className="App">
-        <Nav loggedIn={this.state.loggedIn} user={this.state.currentUser} />
+        <Nav handleLogout={this.handleLogOut} loggedIn={this.state.loggedIn} user={this.state.currentUser} />
         {/* <UsersHome/> */}
         <Switch>
           {/* <Route path="/users/:id" component={User} /> */}

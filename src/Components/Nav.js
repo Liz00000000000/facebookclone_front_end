@@ -19,13 +19,13 @@ class Nav extends Component {
             <NavLink to={`users/${this.props.user.id}`}>Profile</NavLink>    
             <NavLink to="/posts">Posts</NavLink>
             <NavLink to="/users">Users</NavLink>
-            <NavLink to="/">Log Out</NavLink>
+            <NavLink onClick={this.props.handleLogout} to="/">Log Out</NavLink>
         </div>
     }
 
     render() {
         // console.log(this.props.currentUser)
-        // console.log(this.props.user)
+        // console.log(this.props.handleLogout)
         return (
             <nav>
                 <div className="inner-nav">
