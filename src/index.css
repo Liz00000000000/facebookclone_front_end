@@ -712,3 +712,20 @@ nav .page-nav-container.logged-out a:last-of-type {
   min-height: 35px;
   width: 100%;
 }
+
+/* user page */
+.post .post-interaction-container {
+  flex-direction: column;
+}
+
+.post .post-interaction-container .btns-container {
+  margin-bottom: 1rem;
+}
+
+.post .post-interaction-container {
+  text-align: left;
+}
+
+.post .post-interaction-container .comment-content {
+  margin-top: 1rem;
+}
