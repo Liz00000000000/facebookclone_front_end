@@ -27,6 +27,7 @@ class Comment extends Component {
 
     render() {
         let commentWriter = this.props.users.find(user => user.id === this.props.user_id )
+        console.log(this.props)
         return (
             <div className='comment'>
                 <span className='commenter-name'>
@@ -35,7 +36,7 @@ class Comment extends Component {
                 </span>
                 <p>{this.props.content}</p>
                 <div className="btn-container">
-                <button onClick={this.handleDelete}>Delete Comment</button>
+                {this.props.currentUser.id === commentWriter.id ? <button onClick={this.handleDelete}>Delete Comment</button> : null }
                 {/* <button className='add-reply' onClick={this.handleClick}>{this.state.inputVisible ? 'Submit Reply' : 'Add Reply'}</button> 
                 {this.state.inputVisible ? <input onChange={this.handleOnChange} name='newReplyInput' placeholder='Comment...' value={this.state.newCommentInput}></input> : null } */}
                 </div>

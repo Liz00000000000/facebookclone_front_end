@@ -20,6 +20,9 @@ const User = (props) => {
             </div>
     }
 
+
+    let posts = props.posts.filter(post => post.user_id === props.user.id)
+
     
     return(
         <div>
@@ -43,7 +46,7 @@ const User = (props) => {
             <div className="post-container">
                 { props.user.id === props.currentUser.id ? showNewPostForm() : null }
                 <div className="inner-container">
-                    {props.posts.map(post => <PostOnProfilePage  currentUser={props.currentUser} comments={props.comments} submitPost={props.submitPost} currentUser={props.currentUser} likes={props.likes} deletePost={props.deletePost} users={props.users} key={post.id} {...post} />)}
+                    {posts.map(post => <PostOnProfilePage likes={props.likes}  currentUser={props.currentUser} comments={props.comments} submitPost={props.submitPost} currentUser={props.currentUser} likes={props.likes} deletePost={props.deletePost} users={props.users} key={post.id} {...post} />)}
                 </div>
             </div>
         </div>

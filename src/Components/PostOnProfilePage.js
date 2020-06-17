@@ -4,7 +4,8 @@ import CommentInProfile from './CommentInProfile'
 export class PostOnProfilePage extends Component {
     state = {
         inputVisible: false,
-        comment: ''
+        comment: '',
+        addedLikes: 0
     }
 
 
@@ -29,11 +30,29 @@ export class PostOnProfilePage extends Component {
         event.target.parentNode.parentNode.parentNode.remove()
     }
 
+    addLike = () => {
+        const postId = this.props.id
+        const user = this.props.currentUser.id
+        fetch('http://localhost:3000/likes', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json',
+                accept: 'application/json'
+            }, body: JSON.stringify({
+                user_id: user,
+                post_id: postId
+            })
+        })
+        
+        this.setState({ likes: this.state.likes + 1 })
+    }
+
     
     render () {
         let comments = this.props.comments.filter(comment => comment.post_id === this.props.id)
         let user = this.props.users.find(user => user.id === this.props.user_id)
-        console.log(this.props)
+        let likes = this.props.likes.filter(like => like.post_id === this.props.id)
+        let numOfLikes = likes.length + this.state.likes 
         return (
             <div className='post'>
                 <div className='user-container'>
@@ -44,11 +63,11 @@ export class PostOnProfilePage extends Component {
                 <p>{this.props.caption}</p>
                 <div className='post-interaction-container'>
                     <div className='btns-container'> 
-                    <button className='add-like'> <i className='fad fa-heart'/>Like</button>
+                    <button onClick={this.addLike} className='add-like'> <i className='fad fa-heart'/>Like</button>
                     {this.props.currentUser.id === user.id  ? <button onClick={this.removePost}>Delete Post</button> : null }
                  <button className='add-comment' onClick={this.handleClick} > {this.state.inputVisible ? 'Submit Comment' : 'Add Comment'}</button>
                    {this.state.inputVisible ? <input name='comment' onChange={this.handleOnChange} value={this.state.comment}></input> : null }
-                    </div>
+                    {numOfLikes} Likes </div>
                     {comments.map(comment => <CommentInProfile users={this.props.users} key={comment.id} {...comment} />) }
                     {/* <div className='likes-container'>
                         <span className='like-count'>{this.likesArray ? this.likes : null }</span>

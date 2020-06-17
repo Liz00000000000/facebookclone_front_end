@@ -26,6 +26,7 @@ class App extends Component {
     email: '',
     password: '',
     userLoggedIn: null,
+    currentUser: {"id":141,"first_name":"Sedef","last_name":"Orbay","age":28,"bio":"Should have burned this place down when I had the chance.","location":"Erzurum","occupation":"Manufacturing Associate","college":"Kub Academy","picture":"https://randomuser.me/api/portraits/women/43.jpg","email":"sedef.orbay@example.com","password":"misty1","posts":[{"id":493,"caption":"Rhetoric is the art of ruling the minds of men.","user_id":141,"img_url":null},{"id":524,"caption":"Only the educated are free.","user_id":141,"img_url":null},{"id":601,"caption":"Quality is not an act, it is a habit.","user_id":141,"img_url":null}]}
     // seePostsOnly: true
   }
 
