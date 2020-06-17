@@ -152,6 +152,15 @@ handleDelete = (id) => {
   this.setState({ loggedIn: false, currentUser: null })
 }
 
+
+  accontCreated = () => {
+    this.setState({ loggedIn: true })
+  }
+
+  addUsertoState = (obj) => {
+    this.setState({ currentUser: obj })
+  } 
+
   render() {
     console.log(this.state.handleLogOut)
     return (
@@ -164,7 +173,7 @@ handleDelete = (id) => {
           <Route path="/users/:id" render={() => <User handleDelete={this.handleDelete} friends={this.state.friends} users={this.state.users} comments={this.state.comments} submitPost={this.submitPost} currentUser={this.state.currentUser} likes={this.state.likes} posts={this.state.posts} handleOnchange={this.handleOnchange} handleSubmitNewPost={this.handleSubmitNewPost} newPost={this.state.newPost} deletePost={this.deletePost} user={this.state.indivUser} />} />
           <Route path="/users" render={() => <UserIndex loggedIn={this.state.loggedIn} currentUserFunc={this.currentUser} users={this.state.users} />} />
           <Route path="/login" render={() => <LoginForm handleSubmit={this.handleLogIn} handleChange={this.handleOnchange} email={this.state.email} password={this.state.password}/>} />
-          <Route path="/signup" component={SignupForm} />
+          <Route path="/signup" render={() => <SignupForm addUsertoState={this.addUsertoState}  accontCreated={this.accontCreated} />} />
           <Route path="/" component={Landing} />
         </Switch>
       </div>
