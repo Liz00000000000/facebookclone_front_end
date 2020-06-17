@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
 class LoginForm extends Component {
 
@@ -27,7 +28,7 @@ class LoginForm extends Component {
                     <input className="email" type="text" name="email" placeholder="email" value={this.props.email} onChange={this.props.handleChange} />
 
                     <input className="password" type="password" name="password" placeholder="password" value={this.props.password} onChange={this.props.handleChange} />
-                    <input type="submit"/>
+                        <input type="submit"/>
                 </form>
             </div>
         )

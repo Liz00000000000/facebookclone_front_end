@@ -12,8 +12,15 @@ const User = (props) => {
      props.handleSubmitNewPost(props.user.id)
     }
 
+    const showNewPostForm = () => {
+        return <div className="new-post-container">
+                <h3>Write New Post</h3>
+                <input type="text" name='newPost' onChange={props.handleOnchange} value={props.newPost} placeholder='What are you up to?'></input>
+                <button onClick={handleClick}>Submit</button>
+            </div>
+    }
 
-    console.log(props.users)
+    
     return(
         <div>
             <div className="hero"></div>
@@ -34,11 +41,7 @@ const User = (props) => {
                 </div>
             </div>
             <div className="post-container">
-                <div className="new-post-container">
-                    <h3>Write New Post</h3>
-                    <input type="text" name='newPost' onChange={props.handleOnchange} value={props.newPost} placeholder='What are you up to?'></input>
-                    <button onClick={handleClick}>Submit</button>
-                </div>
+                { props.user.id === props.currentUser.id ? showNewPostForm() : null }
                 <div className="inner-container">
                     {props.posts.map(post => <PostOnProfilePage comments={props.comments} submitPost={props.submitPost} currentUser={props.currentUser} likes={props.likes} deletePost={props.deletePost} users={props.users} key={post.id} {...post} />)}
                 </div>

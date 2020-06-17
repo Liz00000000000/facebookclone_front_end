@@ -16,7 +16,7 @@ class Nav extends Component {
 
     loggedInNav = () => {
         return <div className="page-nav-container logged-in">
-            <NavLink to="#">Profile</NavLink>    
+            <NavLink to={`users/${this.props.user.id}`}>Profile</NavLink>    
             <NavLink to="/posts">Posts</NavLink>
             <NavLink to="/users">Users</NavLink>
             <NavLink to="/">Log Out</NavLink>
@@ -24,7 +24,8 @@ class Nav extends Component {
     }
 
     render() {
-        // console.log(this.props.loggedIn)
+        // console.log(this.props.currentUser)
+        // console.log(this.props.user)
         return (
             <nav>
                 <div className="inner-nav">

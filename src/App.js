@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Nav from './Components/Nav'
 import UserIndex from './Components/UserIndex';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, useHistory } from 'react-router-dom';
 import Landing from './Components/Landing';
 import User from './Components/User';
 import Post from './Components/Post'
@@ -25,7 +25,7 @@ class App extends Component {
     loggedIn: false,
     email: '',
     password: '',
-    userLoggedIn: null
+    userLoggedIn: null,
     // seePostsOnly: true
   }
 
@@ -39,7 +39,7 @@ class App extends Component {
 }
 
 currentUser = (id) => {
-  console.log(id)
+  // console.log(id)
   const indivUserObj = this.state.users.find(user => user.id === id)
   this.setState({
     indivUser: indivUserObj
@@ -51,11 +51,12 @@ handleNewComment = (newCom) => {
 }
 
 handleLike = (postID) => {
+  console.log(postID)
   fetch('http://localhost:3000/likes', {
     method: 'POST', 
     headers: {
       'content-type': 'application/json',
-      accept: 'application/json'
+      'accept': 'application/json'
     },
     body: JSON.stringify({ post_id: postID, user_id: 144})
   }).then(res => res.json()).then(res => this.setState({ likes: [...this.state.likes, res] }))
@@ -76,15 +77,19 @@ deletePost = (id) => {
 
 handleSubmitNewPost = (id) => {
   const content = this.state.newPost
-  console.log(content)
+  // console.log(content)
+  console.log({ user_id: id, caption: content, date: "2020-06-18"})
   fetch('http://localhost:3000/posts', {
     method: 'POST', 
     headers: {
       "content-type": 'application/json',
       accept: 'application/json'
     },
-    body: JSON.stringify({ user_id: id, caption: content })
-  }).then(res => res.json()).then(posts => this.setState({ posts: [...this.state.posts, posts], newPost: '' }))
+    body: JSON.stringify({ user_id: id, caption: content, date: "2020-06-18"})
+  })
+    .then(res => res.json())
+    .then(posts => this.setState({ posts: [...this.state.posts, posts], newPost: '' }))
+    .then(posts => console.log(posts))
 }
 
 
@@ -99,13 +104,16 @@ handleLogIn = (e) => {
   const user = this.state.users.find(user => user.email === email)
   if (user.password === this.state.password){
     this.setState({ loggedIn: true, currentUser: user, email: '', password: '' })
+    // this.props.history.push(`/posts`);
   }
 }
 
 
 submitPost = (obj, postID) => {
+  // console.log(obj)
+  const content = this.state.newPost
   if( this.state.userLoggedIn != null ) {
-        console.log(obj, postID)
+        // console.log(obj, postID)
         const user = this.state.currentUser.id 
         fetch('http://localhost:3000/comments', {
           method: 'POST',
@@ -125,10 +133,10 @@ submitPost = (obj, postID) => {
 }
 
   render() {
-    // console.log(this.state.loggedIn)
+    // console.log(this.state.newPost)
     return (
       <div className="App">
-        <Nav loggedIn={this.state.loggedIn} />
+        <Nav loggedIn={this.state.loggedIn} user={this.state.currentUser} />
         {/* <UsersHome/> */}
         <Switch>
           {/* <Route path="/users/:id" component={User} /> */}

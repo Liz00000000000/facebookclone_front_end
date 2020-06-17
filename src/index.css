@@ -198,6 +198,19 @@ nav .page-nav-container.logged-out a:last-of-type {
   margin: auto;
 }
 
+.user-info .left-container {
+  width: 60%;
+  transform: translateX(18%);
+  justify-content: space-around;
+}
+
+.user-info .left-container > * {
+  display: inline-block;
+  width: 33%;
+  margin-top: .5rem;
+  margin-bottom: .5rem;
+}
+
 .user-info .left-container * {
   color: #f7f7f7;
 }
@@ -391,7 +404,7 @@ nav .page-nav-container.logged-out a:last-of-type {
 .post .post-interaction-container .likes-container span {
   font-weight: bold;
 }
-.post .add-comment, .post .add-like, .post .add-reply, .post .delete-post {
+.post .add-comment, .post .add-like, .post .add-reply, .post button {
   background: #8878FF;
   color: #f7f7f7;
   text-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
