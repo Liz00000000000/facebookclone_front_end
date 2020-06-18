@@ -13,7 +13,8 @@ export class Post extends Component {
            this.state = {
                 inputVisible: false,
                 newCommentInput: '',
-                com: null 
+                com: null, 
+                addedLike: 0 
             } 
    }
 
@@ -65,6 +66,10 @@ export class Post extends Component {
     //    }
     //  }
 
+    addALike = () => {
+     this.setState({ addedLike: this.state.addedLike + 1 })
+    this.props.handleLike(this.props.id)
+    }
 
 
 
@@ -72,10 +77,10 @@ export class Post extends Component {
         const userid = this.props.user_id
         const postWritter = this.props.users.find(user => user.id === userid)
         const postLikes = this.props.likes.filter(like => like.post_id === this.props.id)
-        let numOfLikes = postLikes.length
+        let numOfLikes = postLikes.length + this.state.addedLike
         let commentsForThisPage = this.props.commentsFromState.filter(comment => comment.post_id == this.props.id)
-
         // console.log(this.props.currentUser)
+        console.log(numOfLikes)
 
         return (
             <div className="posts-inner-container">
@@ -89,7 +94,7 @@ export class Post extends Component {
                     <p>{numOfLikes} Likes</p>
                     <div className='post-interaction-container'>
                         <div className='btns-container'> 
-                        <button className='add-like' onClick={() => this.props.handleLike(this.props.id)}> <i className='fad fa-heart'/>Like</button>
+                        <button className='add-like' onClick={this.addALike}> <i className='fad fa-heart'/>Like</button>
                     <button className='add-comment' onClick={this.handleClick} > {this.state.inputVisible ? 'Submit Comment' : 'Add Comment'}</button>
                 {commentsForThisPage.map(comment => <Comment currentUser={this.props.currentUser} users={this.props.users} key={comment.id} {...comment} />) }
                                         <div className='likes-container'>

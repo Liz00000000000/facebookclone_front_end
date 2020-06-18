@@ -8,6 +8,7 @@ import User from './Components/User';
 import Post from './Components/Post'
 import LoginForm from './Components/LoginForm'
 import SignupForm from './Components/SignupForm'
+import PostOnProfilePage from './Components/PostOnProfilePage';
 
 
 class App extends Component {
@@ -66,7 +67,7 @@ handleLike = (postID) => {
       'content-type': 'application/json',
       'accept': 'application/json'
     },
-    body: JSON.stringify({ post_id: postID, user_id: 144})
+    body: JSON.stringify({ post_id: postID, user_id: 218})
   }).then(res => res.json()).then(res => this.setState({ likes: [...this.state.likes, res] }))
 }
 
@@ -170,7 +171,8 @@ handleDelete = (id) => {
         {/* <UsersHome/> */}
         <Switch>
           {/* <Route path="/users/:id" component={User} /> */}
-          <Route path='/posts' render={() => this.state.posts.map(post => <Post currentUser={this.state.currentUser} likes={this.state.likes} handleLike={this.handleLike} handleNewComment={this.handleNewComment} key={post.id} commentsFromState={this.state.comments} {...post} users={this.state.users} />) } />
+          {/* <Route path='/posts' render={() => this.state.posts.map(post => <Post currentUser={this.state.currentUser} likes={this.state.likes} handleLike={this.handleLike} handleNewComment={this.handleNewComment} key={post.id} commentsFromState={this.state.comments} {...post} users={this.state.users} />) } /> */}
+          <Route path='/posts' render={() => this.state.posts.map(post => <Post comments={this.state.comments} currentUser={this.state.currentUser} likes={this.state.likes} submitPost={this.submitPost} handleLike={this.handleLike} handleNewComment={this.handleNewComment} key={post.id} commentsFromState={this.state.comments} {...post} users={this.state.users} />) } />
           <Route path="/users/:id" render={() => <User handleDelete={this.handleDelete} friends={this.state.friends} users={this.state.users} comments={this.state.comments} submitPost={this.submitPost} currentUser={this.state.currentUser} likes={this.state.likes} posts={this.state.posts} handleOnchange={this.handleOnchange} handleSubmitNewPost={this.handleSubmitNewPost} newPost={this.state.newPost} deletePost={this.deletePost} userProf={this.state.currentUser} user={this.state.indivUser} />} />
           <Route path="/users" render={() => <UserIndex loggedIn={this.state.loggedIn} currentUserFunc={this.currentUser} users={this.state.users} />} />
           <Route path="/login" render={() => <LoginForm handleSubmit={this.handleLogIn} handleChange={this.handleOnchange} email={this.state.email} password={this.state.password}/>} />
