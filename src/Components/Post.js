@@ -77,7 +77,7 @@ export class Post extends Component {
         const userid = this.props.user_id
         const postWritter = this.props.users.find(user => user.id === userid)
         const postLikes = this.props.likes.filter(like => like.post_id === this.props.id)
-        let numOfLikes = postLikes.length + this.state.addedLike
+        let numOfLikes = postLikes.length
         let commentsForThisPage = this.props.commentsFromState.filter(comment => comment.post_id == this.props.id)
         // console.log(this.props.currentUser)
         console.log(numOfLikes)
