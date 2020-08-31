@@ -5,4 +5,4 @@
 <p>Users can browse other users.</p>
 <img src='./browse.png' alt='browse' />
 <p>And of course, create their own custom profile.</p>
-<img src='profile.png' alt='profile'> 
+<img src='./profile.png' alt='profile'> 
