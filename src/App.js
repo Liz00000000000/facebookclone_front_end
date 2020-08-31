@@ -26,8 +26,8 @@ class App extends Component {
     loggedIn: false,
     email: '',
     password: '',
-    userLoggedIn: null,
-    currentUser: {"id":141,"first_name":"Sedef","last_name":"Orbay","age":28,"bio":"Should have burned this place down when I had the chance.","location":"Erzurum","occupation":"Manufacturing Associate","college":"Kub Academy","picture":"https://randomuser.me/api/portraits/women/43.jpg","email":"sedef.orbay@example.com","password":"misty1","posts":[{"id":493,"caption":"Rhetoric is the art of ruling the minds of men.","user_id":141,"img_url":null},{"id":524,"caption":"Only the educated are free.","user_id":141,"img_url":null},{"id":601,"caption":"Quality is not an act, it is a habit.","user_id":141,"img_url":null}]},
+    userLoggedIn: {"id":1,"first_name":"Misty","last_name":"Jones","age":54,"bio":"Well, just tell him to call me as asap as possible.","location":"Austin","occupation":"Technology Agent","college":"West Upton Academy","picture":"https://randomuser.me/api/portraits/women/20.jpg","email":"misty.jones@example.com","password":"popo","created_at":"2020-08-31T22:30:24.131Z","updated_at":"2020-08-31T22:30:24.131Z"},
+    currentUser: {"id":1,"first_name":"Misty","last_name":"Jones","age":54,"bio":"Well, just tell him to call me as asap as possible.","location":"Austin","occupation":"Technology Agent","college":"West Upton Academy","picture":"https://randomuser.me/api/portraits/women/20.jpg","email":"misty.jones@example.com","password":"popo","created_at":"2020-08-31T22:30:24.131Z","updated_at":"2020-08-31T22:30:24.131Z"},
     redirectTo: false
     // seePostsOnly: true
   }
